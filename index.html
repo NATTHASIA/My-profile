@@ -1,170 +1,201 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนะนำตัว - My Profile</title>
+    <!-- นำเข้าฟอนต์ภาษาไทย Prompt จาก Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ตั้งค่าพื้นฐาน */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Prompt', sans-serif;
+        }
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+        body {
+            /* พื้นหลังไล่สี */
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-    }
+        /* การ์ดโปรไฟล์ */
+        .profile-card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
+        /* แบนเนอร์ด้านบน */
+        .header-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 120px;
+        }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #38bdf8;
-    }
+        /* ข้อมูลโปรไฟล์ */
+        .profile-info {
+            padding: 0 30px 40px;
+            text-align: center;
+            margin-top: -60px;
+        }
 
-    .status {
-      background: #14532d;
-      color: #4ade80;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 14px;
-    }
+        /* รูปโปรไฟล์ */
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #eee;
+        }
 
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #1e293b, #312e81);
-      border-radius: 20px;
-      margin-bottom: 30px;
-    }
+        h1 {
+            margin-top: 15px;
+            font-size: 24px;
+            color: #1f2937;
+            font-weight: 600;
+        }
 
-    .hero h1 {
-      font-size: 48px;
-      margin: 0 0 15px;
-    }
+        .title {
+            color: #6b7280;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
 
-    .hero p {
-      color: #cbd5e1;
-      font-size: 18px;
-    }
+        /* หัวข้อต่างๆ ในการ์ด */
+        .section-content {
+            margin-top: 25px;
+            text-align: left;
+        }
 
-    button {
-      margin-top: 20px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 8px;
-      background: #38bdf8;
-      color: #082f49;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+        h2 {
+            font-size: 18px;
+            color: #4b5563;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f3f4f6;
+            padding-bottom: 5px;
+        }
 
-    button:hover {
-      transform: scale(1.05);
-      background: #7dd3fc;
-    }
+        p {
+            color: #4b5563;
+            line-height: 1.6;
+            font-size: 15px;
+            font-weight: 300;
+        }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+        /* ป้ายแสดงทักษะ (Tags) */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
 
-    .card {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 15px;
-      border: 1px solid #334155;
-    }
+        .skill-tag {
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
 
-    .card h3 {
-      color: #38bdf8;
-    }
+        /* ข้อมูลการติดต่อ */
+        .contact-list {
+            list-style: none;
+            margin-top: 10px;
+        }
 
-    #result {
-      margin-top: 20px;
-      text-align: center;
-      color: #4ade80;
-      min-height: 25px;
-    }
+        .contact-list li {
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    @media (max-width: 700px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
+        .contact-list li a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-      .hero h1 {
-        font-size: 36px;
-      }
-    }
-  </style>
+        .contact-list li a:hover {
+            text-decoration: underline;
+        }
+
+        /* รองรับหน้าจอมือถือ */
+        @media (max-width: 480px) {
+            .profile-info {
+                padding: 0 20px 30px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-  <div class="container">
+    <div class="profile-card">
+        <!-- พื้นหลังด้านบน -->
+        <div class="header-bg"></div>
 
-    <header>
-      <div class="logo">TEST.DEV</div>
-      <div class="status">● ONLINE</div>
-    </header>
+        <div class="profile-info">
+            <!-- ใส่ URL รูปภาพของคุณตรง src -->
+            <img src="https://via.placeholder.com/150" alt="รูปโปรไฟล์" class="profile-pic">
+            
+            <h1>ชื่อ-นามสกุล ของคุณ</h1>
+            <div class="title">ตำแหน่ง หรือ อาชีพ (เช่น Web Developer)</div>
 
-    <section class="hero">
-      <h1>Hello, World! 🚀</h1>
-      <p>เว็บไซต์ทดลอง HTML + CSS + JavaScript</p>
+            <!-- ส่วนแนะนำตัว -->
+            <div class="section-content">
+                <h2>เกี่ยวกับฉัน</h2>
+                <p>สวัสดีครับ! ผมเป็นคนที่หลงใหลในการเขียนโค้ดและการสร้างสรรค์สิ่งใหม่ๆ ชอบเรียนรู้เทคโนโลยีใหม่ๆ อยู่เสมอ และมีความตั้งใจที่จะพัฒนาผลงานให้ออกมาดีที่สุด</p>
+            </div>
 
-      <button onclick="runTest()">
-        กดเพื่อทดสอบ JavaScript
-      </button>
+            <!-- ส่วนทักษะความสามารถ -->
+            <div class="section-content">
+                <h2>ทักษะความสามารถ</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">HTML & CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">การทำงานเป็นทีม</span>
+                </div>
+            </div>
 
-      <div id="result"></div>
-    </section>
-
-    <section class="cards">
-
-      <div class="card">
-        <h3>HTML</h3>
-        <p>โครงสร้างเว็บไซต์และเนื้อหาต่าง ๆ</p>
-      </div>
-
-      <div class="card">
-        <h3>CSS</h3>
-        <p>ตกแต่งสี รูปแบบ Layout และ Responsive</p>
-      </div>
-
-      <div class="card">
-        <h3>JavaScript</h3>
-        <p>เพิ่มความสามารถในการโต้ตอบกับผู้ใช้งาน</p>
-      </div>
-
-    </section>
-
-  </div>
-
-  <script>
-    function runTest() {
-      const result = document.getElementById("result");
-
-      result.textContent = "✓ JavaScript ทำงานเรียบร้อยแล้ว!";
-
-      console.log("Test successful!");
-    }
-  </script>
+            <!-- ส่วนการติดต่อ -->
+            <div class="section-content">
+                <h2>ช่องทางการติดต่อ</h2>
+                <ul class="contact-list">
+                    <li>📧 อีเมล: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+                    <li>📱 เบอร์โทร: 08x-xxx-xxxx</li>
+                    <li>🌐 เว็บไซต์: <a href="#" target="_blank">www.yourwebsite.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
