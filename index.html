@@ -1,15 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Website</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .status {
+      background: #14532d;
+      color: #4ade80;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #1e293b, #312e81);
+      border-radius: 20px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin: 0 0 15px;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      font-size: 18px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background: #38bdf8;
+      color: #082f49;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #7dd3fc;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid #334155;
+    }
+
+    .card h3 {
+      color: #38bdf8;
+    }
+
+    #result {
+      margin-top: 20px;
+      text-align: center;
+      color: #4ade80;
+      min-height: 25px;
+    }
+
+    @media (max-width: 700px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>ณัฐวิภา เสียงหวาน</h1>
-<p>6823765349 / วิทยาลัยนวัตกรรม</p>
-<p>แอปที่อยากสร้างในวิชานี้: แอปเช็คหนังสือ</p>
-<a href="https://github.com/NATTHASIA">GitHub ของฉัน</a>
-<p> test</p>
+
+  <div class="container">
+
+    <header>
+      <div class="logo">TEST.DEV</div>
+      <div class="status">● ONLINE</div>
+    </header>
+
+    <section class="hero">
+      <h1>Hello, World! 🚀</h1>
+      <p>เว็บไซต์ทดลอง HTML + CSS + JavaScript</p>
+
+      <button onclick="runTest()">
+        กดเพื่อทดสอบ JavaScript
+      </button>
+
+      <div id="result"></div>
+    </section>
+
+    <section class="cards">
+
+      <div class="card">
+        <h3>HTML</h3>
+        <p>โครงสร้างเว็บไซต์และเนื้อหาต่าง ๆ</p>
+      </div>
+
+      <div class="card">
+        <h3>CSS</h3>
+        <p>ตกแต่งสี รูปแบบ Layout และ Responsive</p>
+      </div>
+
+      <div class="card">
+        <h3>JavaScript</h3>
+        <p>เพิ่มความสามารถในการโต้ตอบกับผู้ใช้งาน</p>
+      </div>
+
+    </section>
+
+  </div>
+
+  <script>
+    function runTest() {
+      const result = document.getElementById("result");
+
+      result.textContent = "✓ JavaScript ทำงานเรียบร้อยแล้ว!";
+
+      console.log("Test successful!");
+    }
+  </script>
+
 </body>
 </html>
